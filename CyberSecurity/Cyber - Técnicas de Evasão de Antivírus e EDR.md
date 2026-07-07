@@ -130,6 +130,72 @@ DeviceProcessEvents
 
 ---
 
+## 🔍 Como o Antivírus Tradicional Detecta Ameaças
+
+|Técnica|Como funciona|Limitação|
+|---|---|---|
+|**Assinatura**|Compara o arquivo com um banco de "impressões digitais" de malwares conhecidos|Não detecta ameaças novas (zero-day)|
+|**Heurística**|Analisa características do código em busca de padrões suspeitos|Pode gerar falsos positivos|
+|**Análise comportamental**|Observa o que o programa **faz** em execução (ex: tenta criptografar muitos arquivos rapidamente)|Mais eficaz contra ameaças novas, mas exige monitoramento contínuo|
+
+---
+
+## 🧠 EDR — Um Passo Além do Antivírus
+
+O EDR monitora continuamente o **comportamento** de endpoints (não apenas arquivos), correlacionando eventos como:
+
+- Criação de processos incomuns (ex: Word abrindo PowerShell)
+- Conexões de rede para destinos suspeitos
+- Modificações em áreas sensíveis do sistema (registro, agendador de tarefas)
+- Uso de credenciais em contextos anômalos
+
+> [!TIP] Detecção baseada em comportamento vs. arquivo Um EDR bem configurado não depende só de "reconhecer" um arquivo malicioso — ele identifica **sequências de ações suspeitas**, o que o torna mais resiliente contra ameaças desconhecidas do que um antivírus tradicional isolado.
+
+---
+
+## 🧱 Camadas de Proteção Recomendadas (Defesa em Profundidade)
+
+```
+Usuário consciente (treinamento anti-phishing)
+        ↓
+Atualizações automáticas de SO e aplicativos
+        ↓
+Antivírus / EDR ativo e atualizado
+        ↓
+Firewall e segmentação de rede
+        ↓
+Backup regular e testado (offline ou imutável)
+        ↓
+Autenticação multifator (MFA) em todas as contas críticas
+```
+
+> [!NOTE] Nenhuma camada sozinha é suficiente O princípio de **defesa em profundidade** existe porque toda ferramenta de segurança tem limitações — a combinação de camadas é o que realmente reduz o risco, não uma única solução "mágica".
+
+---
+
+## ✅ Boas Práticas para o Usuário Final
+
+- Manter o antivírus/EDR **sempre atualizado** — assinaturas e módulos de detecção evoluem diariamente
+- Nunca desativar a proteção em tempo real, mesmo temporariamente, para instalar programas de fontes não verificadas
+- Ativar **atualizações automáticas** do sistema operacional e navegador
+- Usar **MFA** em e-mail, banco e redes sociais — reduz drasticamente o impacto de credenciais vazadas
+- Fazer **backups regulares e testados**, preferencialmente com uma cópia offline ou imutável, como proteção contra ransomware
+- Desconfiar de e-mails com urgência artificial, anexos inesperados ou links encurtados — ver [[Cyber - Phishing e Engenharia Social]]
+- Revisar periodicamente programas instalados e extensões de navegador, removendo o que não é reconhecido
+
+---
+
+## 🚨 Sinais de Comprometimento que Merecem Atenção
+
+- Lentidão repentina e persistente do sistema
+- Programas abrindo sozinhos ou processos desconhecidos no gerenciador de tarefas
+- Antivírus sendo desativado sem ação do usuário
+- Contas reportando login em locais/dispositivos não reconhecidos
+- Arquivos com extensão alterada ou inacessíveis de repente (possível ransomware)
+
+> [!WARNING] Em caso de suspeita de comprometimento Desconecte o dispositivo da rede (Wi-Fi/cabo) para conter uma possível propagação, evite desligar o computador (pode ajudar preservar evidências), e busque suporte técnico especializado ou o time de segurança da empresa antes de tentar "consertar" sozinho.
+
+---
 
 
 ## 🔗 Notas Relacionadas
@@ -137,4 +203,6 @@ DeviceProcessEvents
 - [[Cyber - Técnicas de Evasão de Antivírus e EDR]]
 - [[Cyber - Pós-exploração Windows]]
 - [[Cyber - Análise e Desenvolvimento de Malwares]]
+- [[Cyber - Ambientes de Prática Legal]]
+- [[Cyber - Writeup Exemplo (DVWA - SQL Injection)]]
 - ⬅️ Voltar para [[Cybersecurity]]
