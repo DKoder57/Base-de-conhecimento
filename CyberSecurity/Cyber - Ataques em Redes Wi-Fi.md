@@ -1,0 +1,104 @@
+---
+
+tags: [cyber, mobile, android, engenharia-reversa]
+área: Cibersegurança / Mobile
+status: draft
+
+matriz: "[[Cybersecurity]]"
+---
+# 🤖 Pentest em Aplicativos Android
+
+> [!quote] Princípio Um APK é só um ZIP com código compilado — quem entende sua estrutura consegue "abrir a caixa" sem executar uma linha sequer.
+
+---
+
+## 🎯 Conceito Principal
+
+Pentest mobile Android combina **engenharia reversa** (entender o app sem rodá-lo) e **análise dinâmica** (observar o app em execução), buscando falhas como dados sensíveis expostos, lógica de segurança quebrável no cliente e comunicação insegura com back-end.
+
+---
+
+## 📦 Estrutura de um APK
+
+Um arquivo `.apk` é essencialmente um ZIP contendo:
+
+|Componente|Conteúdo|
+|---|---|
+|`AndroidManifest.xml`|Permissões, componentes (Activities, Services), configurações|
+|`classes.dex`|Código compilado (Dalvik/ART bytecode)|
+|`res/`|Recursos: layouts, strings, imagens|
+|`lib/`|Bibliotecas nativas (`.so`, código C/C++)|
+|`assets/`|Arquivos brutos incluídos pelo desenvolvedor|
+
+```bash
+# Descompactar um APK para inspecionar seus recursos
+unzip app.apk -d app_extraido/
+
+# Analisar o AndroidManifest.xml (formato binário) de forma legível
+apktool d app.apk -o app_decompilado/
+```
+
+---
+
+## 🔬 Análise Estática
+
+Análise do código e recursos **sem executar** o aplicativo.
+
+```bash
+# Descompilar o bytecode DEX para Java legível
+jadx app.apk -d saida_jadx/
+```
+
+O que se procura tipicamente:
+
+- Chaves de API, segredos ou credenciais _hardcoded_ no código
+- Permissões declaradas no Manifest que excedem o necessário (princípio do menor privilégio)
+- Uso de `WebView` mal configurado (`setJavaScriptEnabled(true)` sem sanitização)
+- Ausência de _certificate pinning_, permitindo interceptação de tráfego
+
+> [!TIP] `AndroidManifest.xml` conta a história do app Componentes marcados como `android:exported="true"` sem proteção adequada podem ser invocados por **outros aplicativos** instalados no aparelho — uma das falhas mais comuns em apps mal configurados.
+
+---
+
+## 🏃 Análise Dinâmica
+
+Observação do app **em execução**, geralmente em um emulador ou dispositivo rooteado.
+
+```bash
+# Listar dispositivos/emuladores conectados via ADB
+adb devices
+
+# Instalar um APK no dispositivo/emulador
+adb install app.apk
+
+# Acompanhar logs do sistema em tempo real
+adb logcat | grep "NomeDoApp"
+```
+
+|Ferramenta|Uso|
+|---|---|
+|**ADB**|Interface de linha de comando para controlar dispositivo|
+|**Frida**|Instrumentação dinâmica — intercepta/modifica chamadas em tempo real|
+|**Burp Suite / mitmproxy**|Interceptar tráfego HTTP(S) do app (com certificado configurado no dispositivo)|
+|**Objection**|Automatiza tarefas comuns de análise dinâmica sobre o Frida|
+
+> [!NOTE] Certificate Pinning Muitos apps validam se o certificado TLS do servidor é exatamente o esperado, impedindo interceptação via proxy — contornar isso (via Frida, por exemplo) é uma técnica avançada usada apenas em testes autorizados sobre apps próprios ou com permissão explícita.
+
+---
+
+## 🔐 Armazenamento de Dados no Dispositivo
+
+Pontos comuns de checagem:
+
+- `SharedPreferences` armazenando dados sensíveis sem criptografia
+- Bancos SQLite locais acessíveis sem proteção
+- Logs do sistema (`Log.d`) vazando informações sensíveis em produção
+
+---
+
+## 🔗 Notas Relacionadas
+
+- [[Cyber - Desenvolvimento de Malwares para Android]]
+- [[Cyber - Análise e Desenvolvimento de Malwares]]
+- [[Cyber - Técnicas de Evasão de Antivírus e EDR]]
+- ⬅️ Voltar para [[Cybersecurity]]
