@@ -1,3 +1,8 @@
+---
+tags:
+  - home
+  - index
+---
 
 # 🏠 Base de Conhecimento — Danilo César
 
@@ -7,17 +12,19 @@
 
 ## 🗺️ Estrutura do Vault
 
-| Aba                        | Descrição                                 |
-| -------------------------- | ----------------------------------------- |
-| [[Logica de programação]]  | Scratch, No-Code, conteúdos introdutórios |
-| [[Web]]                    | HTML, CSS, Bootstrap, Internet            |
-| [[Ferramentas]]            | Git, GitHub, VS Code, terminal            |
-| [[UI-UX]]                  | Design, pesquisa, prototipagem, métricas  |
-| [[JavaScript]]             | Linguagem, estruturas, POO, async         |
-| [[Python]]                 | Linguagem, Escopo, POO, Dados, API's      |
-| [[Banco de Dados]]         | SQL, modelagem, ORMs                      |
-| [[React]]                  | React Native, React JS                    |
-| [[Java]]                   | JDK, Strings, Operadores, Collections     |
+| Aba                       | Descrição                                 |
+| ------------------------- | ----------------------------------------- |
+| [[Logica de programação]] | Scratch, No-Code, conteúdos introdutórios |
+| [[Web]]                   | HTML, CSS, Bootstrap, Internet            |
+| [[Ferramentas]]           | Git, GitHub, VS Code, terminal            |
+| [[UI-UX]]                 | Design, pesquisa, prototipagem, métricas  |
+| [[JavaScript]]            | Linguagem, estruturas, POO, async         |
+| [[Python]]                | Linguagem, Escopo, POO, Dados, API's      |
+| [[Banco de Dados]]        | SQL, modelagem, ORMs                      |
+| [[React]]                 | React Native, React JS                    |
+| [[Java]]                  | JDK, Strings, Operadores, Collections     |
+| [[CyberSecurity]]         | Pentest, Bug Bounty, Active Directory     |
+| [[Flutter & Dart]]        | API, Widgets, Gerência de estado          |
 
 ---
 
@@ -48,7 +55,7 @@
 
 ---
 
-# 🐍 [[Python ]]
+### 🐍 [[Python ]]
 
 > Arquivo de navegação central para todos os tópicos de Python do vault.
 
@@ -68,12 +75,27 @@
 
 ---
 
-### 🛠️ [[Ferramentas]]
+### 🛠️ [[Ferramentas e Devops para Dados]]
 
 > Em construção.
 
 
 ---
+### 🛠️ [[Cloud para dados]]
+
+> Em construção.
+
+---
+
+### 📱 [[Flutter & Dart]]
+
+>Criar aplicações modernas para múltiplas plataformas utilizando uma única base de código eficiente.
+
+---
+
+---
+
+
 
 ## 🎯 Progresso Atual
 
@@ -82,9 +104,12 @@
 - [x] Web — HTML/CSS/Bootstrap
 - [x] UI/UX
 - [ ] Java Script
-- [ ] Python
+- [x] Python
 - [ ] React / React Native
 - [ ] Java
+- [x] Cybersec
+- [ ] Flutter&Dart
+- [ ] Cloud para Dados
 
 ### Projeto ativo
 
